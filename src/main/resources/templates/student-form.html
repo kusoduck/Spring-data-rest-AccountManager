@@ -1,0 +1,55 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<title>Student Registration Form</title>
+	<style type="text/css">
+	.error{color:red}
+	</style>
+</head>
+
+<body>
+	<h3>Student Registration Form</h3>
+	
+	<i>Fill out the form. Asterisk(*) mean required.</i>
+
+	<!-- student is model attribute name -->
+	<form th:action="@{/processStudentForm}" th:object="${student}" method="post">
+		First Name(*): <input type="text" th:field="*{firstName}"/>
+		<!-- add error message (if present) -->
+		<span th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}" class="error"></span>
+		<br><br>
+		Last Name(*): <input type="text" th:field="*{lastName}"/>
+		<!-- add error message (if present) -->
+		<span th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}" class="error"></span>
+		<br><br>
+		Grade: <input type="text" th:field="*{grade}"/>
+		<!-- add error message (if present) -->
+		<span th:if="${#fields.hasErrors('grade')}" th:errors="*{grade}" class="error"></span>
+		<br><br>
+		Postal Code: <input type="text" th:field="*{postalCode}"/>
+		<!-- add error message (if present) -->
+		<span th:if="${#fields.hasErrors('postalCode')}" th:errors="*{postalCode}" class="error"></span>
+		<br><br>
+		Course Code: <input type="text" th:field="*{courseCode}"/>
+		<!-- add error message (if present) -->
+		<span th:if="${#fields.hasErrors('courseCode')}" th:errors="*{courseCode}" class="error"></span>
+		<br><br>
+		Country:
+		<select th:field="*{country}">
+			<option th:each="tempCountry:${countries}" th:value="${tempCountry}" th:text="${tempCountry}"/>
+		</select>
+		<br><br>
+		Favorite Programming Language:
+		<input type="radio" th:field="*{favoriteLanguage}" th:each="tempLang:${languages}" th:value="${tempLang}" th:text="${tempLang}"/>
+		<br><br>
+		Favorite Operating System:
+<!-- 		<input type="checkbox" th:field="*{favoriteSystems}" th:value="Linux">Linux</input> -->
+<!-- 		<input type="checkbox" th:field="*{favoriteSystems}" th:value="macOS">macOS</input> -->
+<!-- 		<input type="checkbox" th:field="*{favoriteSystems}" th:value="'Microsoft Windows'">Microsoft Windows</input> -->
+		<input type="checkbox" th:field="*{favoriteSystems}" th:each="tempSystem:${systems}" th:value="${tempSystem}" th:text="${tempSystem}"/>
+		<br><br>
+		<input type="submit" />
+	</form>
+</body>
+</html>
