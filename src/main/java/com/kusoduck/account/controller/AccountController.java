@@ -30,11 +30,6 @@ public class AccountController {
 		accountService = theAccountService;
 	}
 
-	@GetMapping("/")
-	public String showHome() {
-		return "home";
-	}
-	
 	@GetMapping("/list")
 	public String getAccounts(Model theModel) {
 		List<Account> accounts = accountService.findAll();
@@ -49,14 +44,14 @@ public class AccountController {
 		theModel.addAttribute("account", account);
 		return "account/account-form";
 	}
-	
+
 	@GetMapping("/showFormForUpdate")
 	public String showFromForUpdate(@RequestParam("id") int theId, Model theModel) {
 		Account account = accountService.findById(theId);
 		theModel.addAttribute("account", account);
 		return "account/account-form";
 	}
-	
+
 	@PostMapping("/save")
 	// @ModelAttribute: read the form data that model attribute account
 	public String saveAccount(@ModelAttribute("account") Account theAccount) {
@@ -64,7 +59,7 @@ public class AccountController {
 		//POST/Redirect/GET 模式可以幫助防止用戶進行重複提交表單數據
 		return "redirect:/accounts/list";
 	}
-	
+
 	@GetMapping("/delete")
 	public String delete(@RequestParam("id") int theId) {
 		accountService.deleteById(theId);

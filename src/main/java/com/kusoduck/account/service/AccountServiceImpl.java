@@ -39,6 +39,7 @@ public class AccountServiceImpl implements IAccountService {
 	@Override
 	@Transactional
 	public Account save(Account theAccount) {
+//		theAccount.setPassword(BCrypt.hashpw(theAccount.getPassword(), BCrypt.gensalt()));
 		return accountDAOImpl.save(theAccount);
 	}
 

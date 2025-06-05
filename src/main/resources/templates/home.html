@@ -1,12 +1,47 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
 <meta charset="UTF-8">
 <title>Home Page</title>
 </head>
 <body>
-	<h2>Kusoduck Home Page</h2>
+	<h2>KUSODUCK Home Page</h2>
 	<hr>
 	Welcome to kusoduck home page.
+	
+	<p>
+		User: <span sec:authentication="principal.username"></span>
+		<br><br>
+		Role(s): <span sec:authentication="principal.authorities"></span>
+	</p>
+
+	<div sec:authorize="hasRole('MANAGER')">
+		<p>
+			<a th:href="@{/api/demo/leaders}">Leadership Meeting</a> (Only for
+			manager peeps)
+		</p>
+	</div>
+
+	<div sec:authorize="hasRole('ADMIN')">
+		<p>
+			<a th:href="@{/api/demo/systems}">IT Systems Meeting</a> (Only for
+			Admin peeps)
+		</p>
+	</div>
+
+	<hr>
+	
+	<div>
+		<p>
+			<a th:href="@{/accounts/list}">Accounts</a>
+		</p>
+	</div>
+	
+	<hr>
+	
+	<form action="#" th:action="@{/logout}" method="post">
+		<input type="submit" value="Logout" class="btn btn-outline-primary mt-2">
+	</form>
+	
 </body>
 </html>

@@ -18,14 +18,7 @@
         <form action="#" th:action="@{/logout}" method="post">
 			<input class="btn btn-primary mb-3 " type="submit" value="Logout"/>
 		</form>
-        <hr>
-        	<!-- display user name and role -->
-        	<p>
-        		User: <span sec:authentication="principal.username"></span>
-        		<br><br>
-        		Role(s): <span sec:authentication="principal.authorities"></span>
-        	</p>
-        <hr>
+
         <!-- @{} '@'指的是URL root路徑 -->
         <a th:href="@{/accounts/showFormForAdd}" class="btn btn-primary mb-3 float-end">Add Account</a>
         
@@ -34,16 +27,16 @@
                 <tr>
                     <th>Account Name</th>
                     <th>User Name</th>
-                    <th>Password</th>
-                    <th>Action</th>
+                    <th sec:authorize="hasRole('ADMIN')">Password</th>
+                    <th sec:authorize="hasRole('ADMIN')">Action</th>
                 </tr>
             </thead>
             <tbody>
                 <tr th:each="tempAccount:${accounts}">
                     <td th:text="${tempAccount.accountName}"></td>
                     <td th:text="${tempAccount.username}"></td>
-                    <td th:text="${tempAccount.password}"></td>
-                    <td>
+                    <td th:text="${tempAccount.password}" sec:authorize="hasRole('ADMIN')"></td>
+                    <td sec:authorize="hasRole('ADMIN')">
                     	<a th:href="@{/accounts/showFormForUpdate(id=${tempAccount.id})}" class="btn btn-info btn-sm">
                     		Update
                     	</a>
