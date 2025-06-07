@@ -66,7 +66,7 @@ public class SecurityConfig {
 	@Bean
 	public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
                 http.authorizeHttpRequests(configurer -> configurer
-                                .requestMatchers("/accounts/showFormForAdd", "/accounts/save").permitAll()
+                                .requestMatchers("/users/register").permitAll()
 //				.requestMatchers(HttpMethod.GET, "css/**").authenticated() //Specify that URLs are allowed by any authenticated user.
 //				.requestMatchers(HttpMethod.GET, PATH + "accounts").hasRole("EMPLOYEE")
 //				.requestMatchers(HttpMethod.GET, PATH + "accounts/**").hasRole("EMPLOYEE")
