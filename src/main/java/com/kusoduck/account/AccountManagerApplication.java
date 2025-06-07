@@ -3,14 +3,18 @@ package com.kusoduck.account;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 import com.kusoduck.account.dao.AccountDAO;
 import com.kusoduck.account.entity.Account;
 
 @SpringBootApplication
 @ComponentScan(basePackages = "com.kusoduck")
+@EntityScan(basePackages = "com.kusoduck") // 掃描所有 Entity
+@EnableJpaRepositories(basePackages = "com.kusoduck") // 掃描所有 Repository
 public class AccountManagerApplication {
 
 	public static void main(String[] args) {
