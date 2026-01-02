@@ -23,6 +23,8 @@ public class Account {
 	private String username;
 	@Column(name = "password")
 	private String password;
+	@Column(name = "user_id")
+	private int userId;
 
 	public Account() {
 	}
@@ -33,18 +35,16 @@ public class Account {
 		this.password = password;
 	}
 
-
 	public int getId() {
-		return this.id;
+		return id;
 	}
 
 	public void setId(int id) {
 		this.id = id;
 	}
 
-
 	public String getAccountName() {
-		return this.accountName;
+		return accountName;
 	}
 
 	public void setAccountName(String accountName) {
@@ -52,7 +52,7 @@ public class Account {
 	}
 
 	public String getUsername() {
-		return this.username;
+		return username;
 	}
 
 	public void setUsername(String username) {
@@ -60,16 +60,24 @@ public class Account {
 	}
 
 	public String getPassword() {
-		return this.password;
+		return password;
 	}
 
 	public void setPassword(String password) {
 		this.password = password;
 	}
 
+	public int getUserId() {
+		return userId;
+	}
+
+	public void setUserId(int userId) {
+		this.userId = userId;
+	}
+
 	@Override
 	public String toString() {
-		return "Account [id=" + this.id + ", account=" + this.accountName + ", username=" + this.username + "]";
+		return "Account [account=" + accountName + ", username=" + username + ", userId=" + userId + "]";
 	}
 
 }

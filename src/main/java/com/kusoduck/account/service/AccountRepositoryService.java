@@ -72,4 +72,10 @@ public class AccountRepositoryService implements IAccountService {
 			e.printStackTrace();
 		}
 	}
+
+	@Override
+	public List<Account> findByUserId(int theUserId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

@@ -49,4 +49,10 @@ public class AccountServiceImpl implements IAccountService {
 		accountDAOImpl.deleteById(theId);
 	}
 
+	@Override
+	public List<Account> findByUserId(int theUserId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

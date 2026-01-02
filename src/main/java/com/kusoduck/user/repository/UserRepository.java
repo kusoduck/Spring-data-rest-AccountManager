@@ -8,4 +8,5 @@ import com.kusoduck.user.entity.User;
 @Repository
 public interface UserRepository extends JpaRepository<User, String> {
 
+	User findByName(String name);
 }

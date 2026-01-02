@@ -9,6 +9,8 @@ public interface IAccountService {
 
 	List<Account> findAll();
 
+	List<Account> findByUserId(int theUserId);
+
 	Account findById(int theId);
 
 	Account save(Account theAccount);

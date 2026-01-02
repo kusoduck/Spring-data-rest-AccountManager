@@ -25,7 +25,7 @@ public class AccountManagerApplication {
 	public CommandLineRunner commandLineRunner(AccountDAO accountDAO) {
 		return runner -> {
 //			createAccount(accountDAO);
-			findAll(accountDAO);
+//			findAll(accountDAO);
 //			findByAccountName(accountDAO, "Fake_A");
 //			updateAccount(accountDAO);
 //			deleteAccount(accountDAO);

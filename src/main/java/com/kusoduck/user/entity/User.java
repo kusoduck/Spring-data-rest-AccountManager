@@ -59,4 +59,5 @@ public class User {
 	public void setActive(int active) {
 		this.active = active;
 	}
+
 }
